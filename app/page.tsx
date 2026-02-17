@@ -396,12 +396,12 @@ export default function Home() {
   }, [dark, themeHydrated])
 
   useEffect(() => {
-    const hasOverlayOpen = Boolean(activeSpotlight || activeTech)
+    const hasOverlayOpen = Boolean(activeSpotlight || activeTech || menuOpen)
     document.body.style.overflow = hasOverlayOpen ? "hidden" : ""
     return () => {
       document.body.style.overflow = ""
     }
-  }, [activeSpotlight, activeTech])
+  }, [activeSpotlight, activeTech, menuOpen])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
