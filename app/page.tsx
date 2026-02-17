@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, MotionConfig } from "framer-motion"
 import CountUp from "react-countup"
 import type { IconType } from "react-icons"
 import {
@@ -362,6 +362,9 @@ export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [dark, setDark] = useState(true)
   const [themeHydrated, setThemeHydrated] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const performanceMode = isMobile || prefersReducedMotion
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -386,6 +389,35 @@ export default function Home() {
     })
 
     return () => window.cancelAnimationFrame(frame)
+  }, [])
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 767px)")
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+
+    const syncPreferences = () => {
+      setIsMobile(mobileQuery.matches)
+      setPrefersReducedMotion(reducedMotionQuery.matches)
+    }
+
+    const attachListener = (query: MediaQueryList, listener: () => void) => {
+      if (typeof query.addEventListener === "function") {
+        query.addEventListener("change", listener)
+        return () => query.removeEventListener("change", listener)
+      }
+
+      query.addListener(listener)
+      return () => query.removeListener(listener)
+    }
+
+    syncPreferences()
+    const detachMobile = attachListener(mobileQuery, syncPreferences)
+    const detachReduced = attachListener(reducedMotionQuery, syncPreferences)
+
+    return () => {
+      detachMobile()
+      detachReduced()
+    }
   }, [])
 
   useEffect(() => {
@@ -420,9 +452,15 @@ export default function Home() {
 
   useEffect(() => {
     let frame = 0
+    let sections: HTMLElement[] = []
+
+    const collectSections = () => {
+      sections = NAV_ITEMS.map(({ id }) => document.getElementById(id)).filter(
+        (section): section is HTMLElement => Boolean(section),
+      )
+    }
 
     const updateScrollUi = () => {
-      const sections = NAV_ITEMS.map(({ id }) => document.getElementById(id)).filter(Boolean) as HTMLElement[]
       const marker = window.scrollY + 140
       let currentSection: SectionId = "about"
 
@@ -449,16 +487,22 @@ export default function Home() {
       frame = window.requestAnimationFrame(updateScrollUi)
     }
 
+    const onResize = () => {
+      collectSections()
+      onScroll()
+    }
+
+    collectSections()
     updateScrollUi()
     window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onScroll)
+    window.addEventListener("resize", onResize)
 
     return () => {
       if (frame) {
         window.cancelAnimationFrame(frame)
       }
       window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onScroll)
+      window.removeEventListener("resize", onResize)
     }
   }, [])
 
@@ -477,13 +521,14 @@ export default function Home() {
 
     const navOffset = 92
     const targetTop = section.getBoundingClientRect().top + window.scrollY - navOffset
-    window.scrollTo({ top: targetTop, behavior: "smooth" })
+    window.scrollTo({ top: targetTop, behavior: performanceMode ? "auto" : "smooth" })
     setMenuOpen(false)
   }
 
   return (
-    <div className={dark ? "dark" : ""}>
-      <div className="min-h-screen transition-all duration-500 bg-gradient-to-br from-slate-100 via-white to-slate-100 dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#0f172a] text-gray-900 dark:text-white">
+    <MotionConfig reducedMotion={performanceMode ? "always" : "never"}>
+      <div className={dark ? "dark" : ""}>
+        <div className="min-h-screen transition-all duration-500 bg-gradient-to-br from-slate-100 via-white to-slate-100 dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#0f172a] text-gray-900 dark:text-white">
         {activeSpotlight && (
           <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 md:p-8">
             <button
@@ -753,7 +798,7 @@ export default function Home() {
           </div>
         )}
 
-        <AnimatedBackdrop />
+        <AnimatedBackdrop reduceMotion={performanceMode} />
         <div className="pointer-events-none fixed left-0 top-0 z-[75] h-[3px] w-full bg-transparent">
           <div
             className="h-full origin-left bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_16px_rgba(59,130,246,0.6)]"
@@ -761,7 +806,7 @@ export default function Home() {
           />
         </div>
 
-        <header className="sticky top-0 z-50 border-b border-slate-300/40 dark:border-slate-700/40 bg-white/70 dark:bg-slate-900/55 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 border-b border-slate-300/40 dark:border-slate-700/40 bg-white/70 dark:bg-slate-900/55 backdrop-blur-sm md:backdrop-blur-xl">
           <nav className="flex justify-between items-center px-6 md:px-10 py-4 max-w-7xl mx-auto relative">
             <h1 className="text-lg md:text-xl font-semibold">Arun Selvan G J</h1>
 
@@ -834,7 +879,7 @@ export default function Home() {
 
         <section
           id="about"
-          className="scroll-mt-24 max-w-7xl mx-auto px-6 md:px-10 py-20 grid md:grid-cols-2 gap-12 items-center"
+          className="mobile-content-auto scroll-mt-24 max-w-7xl mx-auto px-6 md:px-10 py-20 grid md:grid-cols-2 gap-12 items-center"
         >
           <motion.div initial="hidden" whileInView="show" variants={fadeUp} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Senior DevOps & Platform Engineer</h2>
@@ -888,7 +933,7 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-6 md:px-10 py-16 grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
+        <section className="mobile-content-auto max-w-6xl mx-auto px-6 md:px-10 py-16 grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
           {STATS.map((item, index) => (
             <motion.div
               key={item.label}
@@ -898,17 +943,21 @@ export default function Home() {
               transition={{ delay: index * 0.05 }}
               viewport={{ once: true, amount: 0.4 }}
               whileHover={{ y: -6 }}
-              className="bg-white/85 dark:bg-white/5 backdrop-blur-md border border-slate-300/70 dark:border-white/20 rounded-2xl py-7 px-4 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white/85 dark:bg-white/5 backdrop-blur-none md:backdrop-blur-md border border-slate-300/70 dark:border-white/20 rounded-2xl py-7 px-4 shadow-sm hover:shadow-md transition-shadow"
             >
               <h3 className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-300">
-                <CountUp
-                  end={item.end}
-                  decimals={item.decimals ?? 0}
-                  suffix={item.suffix}
-                  duration={2.2}
-                  enableScrollSpy
-                  scrollSpyOnce
-                />
+                {performanceMode ? (
+                  `${item.end}${item.suffix}`
+                ) : (
+                  <CountUp
+                    end={item.end}
+                    decimals={item.decimals ?? 0}
+                    suffix={item.suffix}
+                    duration={2.2}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  />
+                )}
               </h3>
               <p className="mt-2 text-sm font-semibold">{item.label}</p>
               <p className="text-xs opacity-70 mt-1">{item.subtext}</p>
@@ -916,7 +965,7 @@ export default function Home() {
           ))}
         </section>
 
-        <section id="projects" className="scroll-mt-24 max-w-6xl mx-auto px-6 md:px-10 py-16">
+        <section id="projects" className="mobile-content-auto scroll-mt-24 max-w-6xl mx-auto px-6 md:px-10 py-16">
           <h3 className="text-3xl font-bold mb-3 text-center">Context Highlights</h3>
           <p className="text-center opacity-80 max-w-3xl mx-auto mb-10">
             Selected outcomes from the resume. Hover for depth and click to jump into the relevant section.
@@ -934,7 +983,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 whileHover={{ y: -8, scale: 1.015 }}
                 onClick={() => scrollToSection(card.targetId)}
-                className="text-left rounded-2xl border border-blue-300/60 dark:border-blue-400/20 bg-white/85 dark:bg-white/5 backdrop-blur-md p-6 transition hover:shadow-xl hover:shadow-blue-500/15 hover:border-blue-500/60"
+                className="text-left rounded-2xl border border-blue-300/60 dark:border-blue-400/20 bg-white/85 dark:bg-white/5 backdrop-blur-none md:backdrop-blur-md p-6 transition hover:shadow-xl hover:shadow-blue-500/15 hover:border-blue-500/60"
               >
                 <p className="text-lg font-semibold mb-2">{card.title}</p>
                 <p className="text-sm opacity-90 mb-4">{card.context}</p>
@@ -949,7 +998,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="skills" className="scroll-mt-24 max-w-6xl mx-auto px-6 md:px-10 py-16">
+        <section id="skills" className="mobile-content-auto scroll-mt-24 max-w-6xl mx-auto px-6 md:px-10 py-16">
           <h3 className="text-3xl md:text-4xl font-bold mb-3 text-center bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-500 bg-clip-text text-transparent">
             Tech Stack
           </h3>
@@ -965,7 +1014,7 @@ export default function Home() {
                 whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setActiveTech(tech)}
-                className="rounded-xl border py-5 px-3 backdrop-blur-md shadow-sm hover:shadow-md transition focus:outline-none focus:ring-2"
+                className="rounded-xl border py-5 px-3 backdrop-blur-none md:backdrop-blur-md shadow-sm hover:shadow-md transition focus:outline-none focus:ring-2"
                 style={{
                   borderColor: `${tech.color}66`,
                   background: dark
@@ -983,7 +1032,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="scroll-mt-24 max-w-6xl mx-auto px-6 md:px-10 py-16">
+        <section id="experience" className="mobile-content-auto scroll-mt-24 max-w-6xl mx-auto px-6 md:px-10 py-16">
           <div className="mb-10 md:mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-3">Experience Timeline</h3>
             <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 max-w-3xl">
@@ -1013,7 +1062,7 @@ export default function Home() {
                     <div className={`${placeLeft ? "md:col-start-1" : "md:col-start-3"} relative ml-10 md:ml-0`}>
                       <motion.div
                         whileHover={{ y: -3, scale: 1.01 }}
-                        className="group relative overflow-hidden rounded-2xl border border-slate-300/70 dark:border-white/15 bg-white/90 dark:bg-white/5 backdrop-blur-md p-5 md:p-6 shadow-sm hover:shadow-xl transition"
+                        className="group relative overflow-hidden rounded-2xl border border-slate-300/70 dark:border-white/15 bg-white/90 dark:bg-white/5 backdrop-blur-none md:backdrop-blur-md p-5 md:p-6 shadow-sm hover:shadow-xl transition"
                       >
                         <div
                           className={`absolute inset-x-0 top-0 h-1 ${
@@ -1096,7 +1145,9 @@ export default function Home() {
 
                     <div className="absolute left-5 top-6 md:static md:col-start-2 md:justify-self-center">
                       <span className="relative flex h-4 w-4 items-center justify-center">
-                        <span className="absolute inline-flex h-4 w-4 rounded-full bg-blue-400/35 animate-ping" />
+                        {!performanceMode && (
+                          <span className="absolute inline-flex h-4 w-4 rounded-full bg-blue-400/35 animate-ping" />
+                        )}
                         <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-blue-500 shadow-[0_0_18px_rgba(59,130,246,0.85)]" />
                       </span>
                     </div>
@@ -1107,14 +1158,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="scroll-mt-24 py-20 border-t border-slate-300/60 dark:border-white/10">
+        <section id="contact" className="mobile-content-auto scroll-mt-24 py-20 border-t border-slate-300/60 dark:border-white/10">
           <div className="max-w-6xl mx-auto px-6 md:px-10">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5 }}
-              className="relative overflow-hidden rounded-3xl border border-slate-300/70 dark:border-white/15 bg-white/90 dark:bg-slate-900/60 backdrop-blur-md p-6 md:p-8 shadow-xl"
+              className="relative overflow-hidden rounded-3xl border border-slate-300/70 dark:border-white/15 bg-white/90 dark:bg-slate-900/60 backdrop-blur-none md:backdrop-blur-md p-6 md:p-8 shadow-xl"
             >
               <div className="pointer-events-none absolute -top-24 -left-20 h-52 w-52 rounded-full bg-cyan-400/20 blur-3xl" />
               <div className="pointer-events-none absolute -bottom-28 -right-16 h-60 w-60 rounded-full bg-blue-500/20 blur-3xl" />
@@ -1232,12 +1283,23 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+        </div>
       </div>
-    </div>
+    </MotionConfig>
   )
 }
 
-function AnimatedBackdrop() {
+function AnimatedBackdrop({ reduceMotion = false }: { reduceMotion?: boolean }) {
+  if (reduceMotion) {
+    return (
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-24 -left-16 h-56 w-56 rounded-full bg-blue-500/12 blur-2xl" />
+        <div className="absolute top-1/4 -right-14 h-64 w-64 rounded-full bg-cyan-400/10 blur-2xl" />
+        <div className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-indigo-500/10 blur-2xl" />
+      </div>
+    )
+  }
+
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <motion.div

@@ -5,6 +5,17 @@ html, body {
   scroll-behavior: smooth;
 }
 
+@media (max-width: 767px) {
+  html, body {
+    scroll-behavior: auto;
+  }
+
+  .mobile-content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 920px;
+  }
+}
+
 body {
   margin: 0;
   background-color: #f8fafc;
