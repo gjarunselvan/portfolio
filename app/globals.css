@@ -1,11 +1,19 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 html, body {
   scroll-behavior: smooth;
 }
 
 body {
-  background: radial-gradient(circle at 70% 20%, #1e3a8a 0%, #0b1220 60%);
+  margin: 0;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html.dark body {
+  background-color: #020617;
+  color: #f8fafc;
 }
 
 .glass-card {
@@ -32,4 +40,17 @@ body {
   margin-bottom: 24px;
   padding-left: 16px;
   border-left: 3px solid #3b82f6;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(-10vh);
+  }
+}
+
+.animate-float {
+  animation: float linear infinite;
 }
