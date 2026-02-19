@@ -72,6 +72,8 @@ type StatItem = {
   suffix: string
   decimals?: number
   subtext: string
+  targetId: SectionId
+  cta: string
 }
 
 type TechItem = {
@@ -198,12 +200,16 @@ const STATS: StatItem[] = [
     end: 100,
     suffix: "+",
     subtext: "Production Linux estate",
+    targetId: "experience",
+    cta: "Open Experience",
   },
   {
     label: "Clusters Operated",
     end: 100,
     suffix: "+",
     subtext: "Kubernetes and platform clusters",
+    targetId: "skills",
+    cta: "Open Skills",
   },
   {
     label: "Production Uptime",
@@ -211,24 +217,32 @@ const STATS: StatItem[] = [
     suffix: "%",
     decimals: 2,
     subtext: "Mission-critical reliability",
+    targetId: "experience",
+    cta: "Open Reliability",
   },
   {
     label: "MTTR Reduction",
     end: 35,
     suffix: "%",
     subtext: "Faster incident recovery",
+    targetId: "experience",
+    cta: "Open Incident Work",
   },
   {
     label: "Release Velocity",
     end: 40,
     suffix: "%",
     subtext: "CI/CD modernization outcome",
+    targetId: "projects",
+    cta: "Open Highlights",
   },
   {
     label: "Task Throughput",
     end: 200,
     suffix: "%",
     subtext: "AI-driven workflow acceleration",
+    targetId: "projects",
+    cta: "Open AI Impact",
   },
 ]
 
@@ -935,15 +949,18 @@ export default function Home() {
 
         <section className="mobile-content-auto max-w-6xl mx-auto px-6 md:px-10 py-16 grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
           {STATS.map((item, index) => (
-            <motion.div
+            <motion.button
               key={item.label}
+              type="button"
               initial="hidden"
               whileInView="show"
               variants={fadeUp}
               transition={{ delay: index * 0.05 }}
               viewport={{ once: true, amount: 0.4 }}
               whileHover={{ y: -6 }}
-              className="bg-white/85 dark:bg-white/5 backdrop-blur-none md:backdrop-blur-md border border-slate-300/70 dark:border-white/20 rounded-2xl py-7 px-4 shadow-sm hover:shadow-md transition-shadow"
+              whileTap={{ scale: 0.985 }}
+              onClick={() => openSpotlight(item.targetId)}
+              className="group bg-white/85 dark:bg-white/5 backdrop-blur-none md:backdrop-blur-md border border-slate-300/70 dark:border-white/20 rounded-2xl py-7 px-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
             >
               <h3 className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-300">
                 {performanceMode ? (
@@ -961,7 +978,11 @@ export default function Home() {
               </h3>
               <p className="mt-2 text-sm font-semibold">{item.label}</p>
               <p className="text-xs opacity-70 mt-1">{item.subtext}</p>
-            </motion.div>
+              <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-blue-600/85 dark:text-blue-300/85 inline-flex items-center gap-1">
+                {item.cta}
+                <FiArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </p>
+            </motion.button>
           ))}
         </section>
 
