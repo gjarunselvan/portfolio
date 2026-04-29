@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Arun Selvan G J | Senior DevOps Engineer",
+  title: "Arun Selvan G J | Senior DevOps & Cloud Platform Engineer",
   description:
-    "Portfolio and resume of Arun Selvan G J, Senior DevOps & Platform Engineer.",
+    "Portfolio and resume of Arun Selvan G J, a Senior DevOps and Cloud Platform Engineer focused on enterprise AWS platforms, Kubernetes, CI/CD architecture, DevSecOps, observability, cost optimization, and AI-assisted automation.",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },

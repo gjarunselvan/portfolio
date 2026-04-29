@@ -27,6 +27,11 @@ html.dark body {
   color: #f8fafc;
 }
 
+body.dark {
+  background-color: #020617;
+  color: #f8fafc;
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);

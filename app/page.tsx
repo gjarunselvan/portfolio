@@ -97,9 +97,9 @@ const TECH_ICONS: TechItem[] = [
     label: "Kubernetes",
     color: "#326CE5",
     achievements: [
-      "Deployed and administered Kubernetes clusters for scalable microservices.",
-      "Enabled 3x traffic growth without latency degradation.",
-      "Stabilized platform operations across large production estates.",
+      "Architected and operated production Kubernetes services on Amazon EKS for enterprise microservices.",
+      "Scaled platforms through 3x traffic growth while preserving zero-downtime service continuity.",
+      "Established runtime practices for resilient, cloud-native workload operations.",
     ],
   },
   {
@@ -107,9 +107,9 @@ const TECH_ICONS: TechItem[] = [
     label: "Docker",
     color: "#0DB7ED",
     achievements: [
-      "Automated build and deployment workflows with Dockerized services.",
-      "Reduced deployment time by 50% through container-first releases.",
-      "Improved environment consistency across multiple delivery stages.",
+      "Standardized containerized build and release workflows across delivery environments.",
+      "Improved deployment efficiency by 50% through repeatable, automation-first delivery paths.",
+      "Reduced environment drift and operational variance across pre-production and production stages.",
     ],
   },
   {
@@ -117,9 +117,9 @@ const TECH_ICONS: TechItem[] = [
     label: "Jenkins",
     color: "#D24939",
     achievements: [
-      "Designed and optimized CI/CD pipelines across 5 environments.",
-      "Increased release frequency by 40% with reliable automation gates.",
-      "Improved deployment reliability and reduced manual errors.",
+      "Architected enterprise CI/CD and GitOps pipelines using Jenkins and Argo CD.",
+      "Improved release frequency by 40%+ through controlled automation, promotion gates, and GitOps practices.",
+      "Reduced deployment risk through repeatable, auditable, and governance-aligned release workflows.",
     ],
   },
   {
@@ -127,9 +127,9 @@ const TECH_ICONS: TechItem[] = [
     label: "Terraform",
     color: "#7B42BC",
     achievements: [
-      "Standardized infrastructure provisioning with repeatable automation patterns.",
-      "Improved infra consistency and rollout confidence for platform changes.",
-      "Supported faster environment setup for delivery and testing teams.",
+      "Built Infrastructure as Code standards with Terraform and CloudFormation.",
+      "Improved infrastructure consistency through reusable provisioning patterns and platform standards.",
+      "Accelerated environment readiness while strengthening governance, traceability, and rollout confidence.",
     ],
   },
   {
@@ -137,9 +137,9 @@ const TECH_ICONS: TechItem[] = [
     label: "AWS/Cloud",
     color: "#FF9900",
     achievements: [
-      "Managed cloud infrastructure and platform resources at scale.",
-      "Optimized infrastructure utilization for 30% cloud cost reduction.",
-      "Improved reliability posture with production-focused operations.",
+      "Designed and operated AWS services including EC2, S3, IAM, VPC, RDS, EKS, CloudWatch, and Lambda.",
+      "Reduced infrastructure spend by 30% through rightsizing, autoscaling, and resource governance.",
+      "Strengthened cloud reliability through secure network design, IAM governance, and production operating controls.",
     ],
   },
   {
@@ -147,9 +147,9 @@ const TECH_ICONS: TechItem[] = [
     label: "Linux",
     color: "#64748B",
     achievements: [
-      "Managed 100+ production Linux servers with hardening and compliance.",
+      "Administered and hardened Linux production environments.",
       "Sustained 99.99% uptime for mission-critical services.",
-      "Led patching, security baseline, and operational stability practices.",
+      "Improved security posture through patch governance, baseline hardening, and operational discipline.",
     ],
   },
   {
@@ -157,9 +157,9 @@ const TECH_ICONS: TechItem[] = [
     label: "Prometheus",
     color: "#E6522C",
     achievements: [
-      "Implemented observability for proactive monitoring and alerting.",
-      "Improved incident visibility and early failure detection.",
-      "Contributed to 35% MTTR reduction with better telemetry coverage.",
+      "Implemented observability for proactive monitoring, alerting, and incident response.",
+      "Improved failure detection through platform-level telemetry across service and infrastructure layers.",
+      "Reduced MTTR by 35% by converting operational signals into actionable response workflows.",
     ],
   },
   {
@@ -167,9 +167,9 @@ const TECH_ICONS: TechItem[] = [
     label: "Grafana",
     color: "#F46800",
     achievements: [
-      "Built actionable dashboards for platform and service health.",
-      "Accelerated root-cause analysis through high-signal visualization.",
-      "Improved decision speed during incident response windows.",
+      "Built executive and engineering dashboards for platform health, service behavior, and incident context.",
+      "Accelerated root-cause analysis through focused, high-signal operational views.",
+      "Improved incident command decisions with clearer production health visibility.",
     ],
   },
   {
@@ -177,9 +177,9 @@ const TECH_ICONS: TechItem[] = [
     label: "Python",
     color: "#3776AB",
     achievements: [
-      "Developed modular AI agents for task automation and orchestration.",
-      "Built evaluation pipelines reaching 95% test coverage across edge cases.",
-      "Improved response consistency by 18% through structured benchmarking.",
+      "Automated operational workflows with Python, Bash, and Ansible.",
+      "Built AI-assisted DevOps workflows for diagnostics, release intelligence, and infrastructure documentation.",
+      "Applied RAG and multi-agent patterns to operational knowledge, decision support, and workflow orchestration.",
     ],
   },
   {
@@ -187,27 +187,27 @@ const TECH_ICONS: TechItem[] = [
     label: "Git",
     color: "#F1502F",
     achievements: [
-      "Enabled controlled release workflows with CI-integrated versioning.",
-      "Supported collaborative delivery across infra and application teams.",
-      "Improved change traceability for operational and project workstreams.",
+      "Enabled controlled release workflows with CI-integrated change governance.",
+      "Supported cross-functional delivery across infrastructure, application, and operations teams.",
+      "Improved traceability across infrastructure change, release execution, and operational workstreams.",
     ],
   },
 ]
 
 const STATS: StatItem[] = [
   {
-    label: "Servers Managed",
-    end: 100,
+    label: "Years of Experience",
+    end: 9,
     suffix: "+",
-    subtext: "Production Linux estate",
+    subtext: "Enterprise cloud and platform engineering",
     targetId: "experience",
     cta: "Open Experience",
   },
   {
-    label: "Clusters Operated",
-    end: 100,
-    suffix: "+",
-    subtext: "Kubernetes and platform clusters",
+    label: "Release Velocity",
+    end: 40,
+    suffix: "%+",
+    subtext: "Enterprise CI/CD and GitOps acceleration",
     targetId: "skills",
     cta: "Open Skills",
   },
@@ -216,7 +216,7 @@ const STATS: StatItem[] = [
     end: 99.99,
     suffix: "%",
     decimals: 2,
-    subtext: "Mission-critical reliability",
+    subtext: "High-availability production platforms",
     targetId: "experience",
     cta: "Open Reliability",
   },
@@ -224,15 +224,15 @@ const STATS: StatItem[] = [
     label: "MTTR Reduction",
     end: 35,
     suffix: "%",
-    subtext: "Faster incident recovery",
+    subtext: "Observability-led incident recovery",
     targetId: "experience",
     cta: "Open Incident Work",
   },
   {
-    label: "Release Velocity",
-    end: 40,
+    label: "Cloud Cost Optimization",
+    end: 30,
     suffix: "%",
-    subtext: "CI/CD modernization outcome",
+    subtext: "Resource governance and platform efficiency",
     targetId: "projects",
     cta: "Open Highlights",
   },
@@ -240,7 +240,7 @@ const STATS: StatItem[] = [
     label: "Task Throughput",
     end: 200,
     suffix: "%",
-    subtext: "AI-driven workflow acceleration",
+    subtext: "Agentic automation and workflow orchestration",
     targetId: "projects",
     cta: "Open AI Impact",
   },
@@ -249,26 +249,26 @@ const STATS: StatItem[] = [
 const HIGHLIGHTS: HighlightCard[] = [
   {
     title: "CI/CD Modernization",
-    context: "Rebuilt delivery pipelines across 5 environments.",
-    impact: "+40% release velocity and 50% faster deployment time.",
+    context: "Architected enterprise delivery systems with Jenkins, Argo CD, GitOps controls, and governed release paths.",
+    impact: "40%+ faster release cadence with 50% higher deployment efficiency.",
     targetId: "experience",
   },
   {
     title: "Reliability Engineering",
-    context: "Platform hardening and observability maturity.",
-    impact: "99.99% uptime with 35% MTTR reduction.",
+    context: "Strengthened production reliability through telemetry, hardening, recovery planning, and incident discipline.",
+    impact: "99.99% uptime with 35% faster incident recovery.",
     targetId: "experience",
   },
   {
     title: "Kubernetes Scale",
-    context: "Container platform growth and traffic resilience.",
-    impact: "Supported 3x traffic growth without latency degradation.",
+    context: "Designed and operated Amazon EKS services for resilient, cloud-native production scaling.",
+    impact: "Handled 3x traffic growth with zero downtime.",
     targetId: "skills",
   },
   {
     title: "AI in DevOps",
-    context: "Multi-agent orchestration for engineering workflows.",
-    impact: "200% throughput and 45% manual triage reduction.",
+    context: "Applied LLM, RAG, and multi-agent workflows to diagnostics, documentation, and decision automation.",
+    impact: "200% throughput improvement in targeted platform automation flows.",
     targetId: "projects",
   },
 ]
@@ -276,16 +276,16 @@ const HIGHLIGHTS: HighlightCard[] = [
 const EXPERIENCE: ExperienceItem[] = [
   {
     company: "Walmart Global Tech",
-    role: "Senior System Engineer III",
+    role: "Senior Systems Engineer III / Senior DevOps Engineer",
     period: "Nov 2020 - Present",
-    location: "Chennai",
+    location: "Chennai, India",
     summary:
-      "Scaled enterprise DevOps and platform reliability across high-traffic, cloud-native systems with measurable delivery and uptime improvements.",
+      "Owns senior-level cloud platform engineering across AWS, Kubernetes, CI/CD, observability, DevSecOps, and AI-assisted automation for enterprise production systems.",
     highlights: [
-      "CI/CD modernization across 5 environments",
-      "100+ Linux servers and large Kubernetes footprint",
-      "AI agents integrated into production DevOps workflows",
-      "End-to-end observability and incident acceleration",
+      "Enterprise CI/CD and GitOps architecture",
+      "Amazon EKS platforms scaled through 3x traffic growth",
+      "AI-assisted DevOps, RAG, and multi-agent automation",
+      "Production observability, governance, and incident acceleration",
     ],
     metrics: [
       { label: "Release Velocity", value: "+40%" },
@@ -294,27 +294,26 @@ const EXPERIENCE: ExperienceItem[] = [
       { label: "Task Throughput", value: "+200%" },
     ],
     bullets: [
-      "Designed and optimized CI/CD workflows using Jenkins, increasing release frequency by 40% and improving deployment reliability across 5 environments.",
-      "Automated build, deployment, and configuration workflows using Bash scripting, Ansible, and Docker, reducing manual operational effort by ~60% and cutting deployment time by 50%.",
-      "Managed and maintained Linux production servers, achieving 99.99% uptime and ensuring compliance with security standards.",
-      "Deployed and administered Kubernetes clusters, enabling scalable containerized microservices and supporting 3x traffic growth without degradation in latency.",
-      "Implemented observability stack using Prometheus, Grafana, and Splunk, reducing MTTR by 35% and improving early incident detection rates.",
-      "Managed OneOps cloud infrastructure, optimizing platform resources and configurations to reduce cloud costs by 30%.",
-      "Performed log file analysis, root cause investigations, and capacity planning to ensure data integrity and support RTO and RPO objectives for critical services.",
-      "Designed and developed modular AI agents capable of task automation, decision-based execution, and workflow orchestration for a 3x productivity improvement in targeted tasks.",
-      "Built a multi-agent orchestration framework enabling agent-to-agent communication and tool integration (APIs, CLI, cloud services), increasing task throughput by 200%.",
-      "Developed a structured Agent Evaluation Framework measuring accuracy, latency, hallucination rate, task completion score, and reliability across edge cases with 95% test coverage.",
-      "Implemented benchmarking pipelines for prompt optimization and output consistency validation, improving model response consistency by 18%.",
-      "Integrated AI agents into DevOps workflows for log summarization, incident diagnostics, release note generation, and infrastructure documentation, reducing manual triage time by 45%.",
-      "Architected a prototype Super Agent system with persistent memory, RAG knowledge, tool execution, and guardrail monitoring for end-to-end automation.",
+      "Architected enterprise CI/CD and GitOps pipelines using Jenkins and Argo CD, improving release frequency by 40%+ while strengthening release governance.",
+      "Designed and operated Kubernetes services on Amazon EKS to absorb 3x traffic growth with zero downtime.",
+      "Reduced cloud infrastructure spend by 30% through rightsizing, autoscaling, and resource governance.",
+      "Built Infrastructure as Code standards with Terraform and CloudFormation for consistent, governed, and faster environment provisioning.",
+      "Automated operational workflows with Python, Bash, and Ansible, reducing manual effort by 60% and improving deployment efficiency by 50%.",
+      "Implemented observability with Prometheus, Grafana, and Splunk, reducing MTTR by 35% and sustaining 99.99% uptime.",
+      "Designed AI-assisted DevOps solutions for log intelligence, incident diagnostics, and release-note generation.",
+      "Built multi-agent orchestration across APIs, CLI tools, and cloud services, improving targeted workflow throughput by 200%.",
+      "Architected RAG-based AI systems with memory layers and evaluation patterns for operational decision automation.",
+      "Strengthened DevSecOps compliance through IAM policy governance, patching, and vulnerability remediation.",
+      "Standardized infrastructure and release documentation to improve onboarding and operational continuity.",
     ],
   },
   {
     company: "Cognizant Technology Solutions",
-    role: "System Engineer",
+    role: "System Engineer (DevOps / Linux / Cloud Support)",
     period: "Aug 2017 - Nov 2020",
+    location: "India",
     summary:
-      "Built a strong reliability foundation through Linux hardening, automation, and operational runbook discipline in production infrastructure.",
+      "Built the operations foundation across Linux administration, cloud support, monitoring, automation, and production incident response that later scaled into senior platform engineering.",
     highlights: [
       "Linux hardening and patch lifecycle ownership",
       "Automated routine maintenance and backups",
@@ -329,35 +328,11 @@ const EXPERIENCE: ExperienceItem[] = [
     ],
     bullets: [
       "Administered and hardened Linux servers for production environments, implementing security best practices, patch management, and compliance controls.",
-      "Automated system backups, user account management, and routine maintenance using Bash scripting to improve operational efficiency.",
-      "Monitored infrastructure using Prometheus, Grafana, and open source monitoring tools, proactively troubleshooting performance issues.",
-      "Provided L2/L3 technical support for hardware, software, and OS-level incidents.",
-      "Improved system stability and recovery readiness through disciplined runbooks and maintenance processes.",
-    ],
-  },
-  {
-    company: "DREAMSPLUS CONSULTING PVT LTD",
-    role: "Technical Support Executive",
-    period: "May 2016 - Apr 2017",
-    summary:
-      "Delivered frontline infrastructure and security operations, strengthening workstation, firewall, and communication reliability for business teams.",
-    highlights: [
-      "Email and network security administration",
-      "Firewall and workstation operational support",
-      "Customer-facing service responsiveness",
-      "Rapid issue handling in fast-paced environments",
-    ],
-    metrics: [
-      { label: "Domain", value: "IT Support" },
-      { label: "Focus", value: "Security" },
-      { label: "Environment", value: "Ops Desk" },
-      { label: "Strength", value: "Response" },
-    ],
-    bullets: [
-      "Maintained email and network security systems, ensuring high availability, data protection, and uninterrupted communication.",
-      "Administered network workstations and firewalls, strengthening organizational security posture and reducing vulnerability exposure.",
-      "Delivered front-office interfaces and data provisioning services, improving responsiveness and service quality for customer-facing operations.",
-      "Supported core IT operations and incident response workflows in a fast-paced service environment.",
+      "Automated system backups, patching, user account management, and routine maintenance using Bash scripting.",
+      "Implemented Prometheus and Grafana monitoring for proactive issue detection and faster incident response.",
+      "Provided L2/L3 support for complex production infrastructure and application incidents in cloud and Linux environments.",
+      "Standardized operational runbooks to reduce repeated incident patterns and improve recovery consistency.",
+      "Collaborated with application and operations teams to improve handoff quality and reduce recurring production issues.",
     ],
   },
 ]
@@ -374,8 +349,7 @@ export default function Home() {
   const [expandedExperience, setExpandedExperience] = useState<Record<string, boolean>>({})
   const [activeNav, setActiveNav] = useState<SectionId>("about")
   const [scrollProgress, setScrollProgress] = useState(0)
-  const [dark, setDark] = useState(true)
-  const [themeHydrated, setThemeHydrated] = useState(false)
+  const [dark, setDark] = useState<boolean | null>(null)
   const [isMobile, setIsMobile] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const performanceMode = isMobile || prefersReducedMotion
@@ -399,7 +373,6 @@ export default function Home() {
 
     const frame = window.requestAnimationFrame(() => {
       setDark(resolvedDark)
-      setThemeHydrated(true)
     })
 
     return () => window.cancelAnimationFrame(frame)
@@ -435,11 +408,14 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark)
-    if (themeHydrated) {
-      window.localStorage.setItem("theme", dark ? "dark" : "light")
+    if (dark === null) {
+      return
     }
-  }, [dark, themeHydrated])
+
+    document.documentElement.classList.toggle("dark", dark)
+    document.body.classList.toggle("dark", dark)
+    window.localStorage.setItem("theme", dark ? "dark" : "light")
+  }, [dark])
 
   useEffect(() => {
     const hasOverlayOpen = Boolean(activeSpotlight || activeTech || menuOpen)
@@ -526,6 +502,16 @@ export default function Home() {
     setMenuOpen(false)
   }
 
+  const toggleTheme = () => {
+    const next = !document.documentElement.classList.contains("dark")
+    document.documentElement.classList.toggle("dark", next)
+    document.body.classList.toggle("dark", next)
+    window.localStorage.setItem("theme", next ? "dark" : "light")
+    setDark(next)
+  }
+
+  const isDark = dark === true
+
   const scrollToSection = (sectionId: SectionId) => {
     const section = document.getElementById(sectionId)
     if (!section) {
@@ -541,7 +527,7 @@ export default function Home() {
 
   return (
     <MotionConfig reducedMotion={performanceMode ? "always" : "never"}>
-      <div className={dark ? "dark" : ""}>
+      <div className={isDark ? "dark" : ""}>
         <div className="min-h-screen transition-all duration-500 bg-gradient-to-br from-slate-100 via-white to-slate-100 dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#0f172a] text-gray-900 dark:text-white">
         {activeSpotlight && (
           <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 md:p-8">
@@ -585,8 +571,9 @@ export default function Home() {
               {activeSpotlight === "about" && (
                 <div className="space-y-5">
                   <p className="text-sm md:text-base opacity-90">
-                    Senior DevOps & Platform Engineer with 10+ years of experience building resilient cloud-native systems,
-                    CI/CD modernization, observability, and AI-driven automation.
+                    Senior DevOps and Cloud Platform Engineer with 9 years of experience architecting, modernizing,
+                    and operating enterprise cloud-native platforms across AWS, Kubernetes, CI/CD, observability,
+                    DevSecOps, and AI-assisted automation.
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {STATS.map((stat) => (
@@ -842,11 +829,11 @@ export default function Home() {
 
               <button
                 type="button"
-                onClick={() => setDark((prev) => !prev)}
+                onClick={toggleTheme}
                 className="text-xs border border-slate-300/50 dark:border-slate-600/70 rounded-full px-3 py-1.5 hover:bg-blue-500/10"
                 aria-label="Toggle theme"
               >
-                {dark ? "Light Mode" : "Dark Mode"}
+                {isDark ? "Switch to Light" : "Switch to Dark"}
               </button>
 
               <a
@@ -861,10 +848,10 @@ export default function Home() {
             <div className="md:hidden flex items-center gap-4">
               <button
                 type="button"
-                onClick={() => setDark((prev) => !prev)}
+                onClick={toggleTheme}
                 aria-label="Toggle theme"
               >
-                {dark ? <FiSun /> : <FiMoon />}
+                {isDark ? <FiSun /> : <FiMoon />}
               </button>
               <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
                 {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -895,14 +882,15 @@ export default function Home() {
           id="about"
           className="mobile-content-auto scroll-mt-24 max-w-7xl mx-auto px-6 md:px-10 py-20 grid md:grid-cols-2 gap-12 items-center"
         >
-          <motion.div initial="hidden" whileInView="show" variants={fadeUp} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Senior DevOps & Platform Engineer</h2>
+          <motion.div initial={false} animate="show" variants={fadeUp}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Senior DevOps & Cloud Platform Engineer</h2>
 
-            <p className="text-blue-500 mb-4">10+ Years • Kubernetes • CI/CD • Cloud • AI-Integrated Automation</p>
+            <p className="text-blue-500 mb-4">9 Years • AWS • Kubernetes • CI/CD • DevSecOps • AI-Assisted Automation</p>
 
             <p className="leading-7 mb-8">
-              Designing resilient cloud-native infrastructure powering 100+ servers and large-scale Kubernetes clusters.
-              Specialized in CI/CD modernization, observability, cost optimization, and AI-driven DevOps innovation.
+              I architect and operate enterprise cloud-native platforms across AWS, Amazon EKS, Infrastructure as Code,
+              observability, cost optimization, DevSecOps, and AI-assisted automation. My work is focused on making
+              delivery faster, production calmer, and platforms easier to govern at scale.
             </p>
 
             <div className="flex gap-4 flex-wrap">
@@ -925,10 +913,9 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={false}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
             className="relative flex justify-center"
           >
             <div className="pointer-events-none absolute -inset-5 md:-inset-7 rounded-[2rem] bg-gradient-to-br from-cyan-400/25 via-blue-500/20 to-indigo-500/25 blur-2xl" />
@@ -989,7 +976,8 @@ export default function Home() {
         <section id="projects" className="mobile-content-auto scroll-mt-24 max-w-6xl mx-auto px-6 md:px-10 py-16">
           <h3 className="text-3xl font-bold mb-3 text-center">Context Highlights</h3>
           <p className="text-center opacity-80 max-w-3xl mx-auto mb-10">
-            Selected outcomes from the resume. Hover for depth and click to jump into the relevant section.
+            Measurable engineering outcomes across platform modernization, release governance, production reliability,
+            cloud efficiency, and AI-assisted operational leverage.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -1024,7 +1012,8 @@ export default function Home() {
             Tech Stack
           </h3>
           <p className="text-center text-sm md:text-base text-slate-700 dark:text-slate-300 mb-10">
-            Color-coded tools powering delivery, reliability, and scale. Tap any logo to view impact.
+            Core technologies I use to design, govern, and operate secure, observable, scalable cloud platforms.
+            Tap any logo to view impact.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center">
@@ -1038,7 +1027,7 @@ export default function Home() {
                 className="rounded-xl border py-5 px-3 backdrop-blur-none md:backdrop-blur-md shadow-sm hover:shadow-md transition focus:outline-none focus:ring-2"
                 style={{
                   borderColor: `${tech.color}66`,
-                  background: dark
+                  background: isDark
                     ? `linear-gradient(160deg, ${tech.color}1a, rgba(15,23,42,0.88))`
                     : `linear-gradient(160deg, ${tech.color}14, rgba(255,255,255,0.9))`,
                   boxShadow: `0 14px 30px ${tech.color}24`,
@@ -1057,7 +1046,8 @@ export default function Home() {
           <div className="mb-10 md:mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-3">Experience Timeline</h3>
             <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 max-w-3xl">
-              A decade-long progression across enterprise operations, platform engineering, and AI-enabled DevOps delivery.
+              A 9-year progression from Linux and cloud operations into senior platform ownership across reliability,
+              delivery architecture, DevSecOps governance, and AI-assisted operations.
             </p>
           </div>
 
@@ -1194,9 +1184,10 @@ export default function Home() {
               <div className="relative grid lg:grid-cols-[1.25fr_1fr] gap-7 md:gap-8">
                 <div>
                   <p className="text-xs uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300 mb-2">Contact</p>
-                  <h3 className="text-2xl md:text-4xl font-bold mb-3">Let’s Build Something Great Together</h3>
+                  <h3 className="text-2xl md:text-4xl font-bold mb-3">Let’s Modernize Delivery and Reliability</h3>
                   <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 max-w-2xl">
-                    Open to impactful DevOps, Platform Engineering, and Reliability roles. If you have a team challenge in scale, uptime, or delivery velocity, let’s connect.
+                    Open to senior DevOps, platform engineering, SRE, cloud infrastructure, and AI-enabled operations
+                    roles where architecture, reliability, governance, and execution all matter.
                   </p>
 
                   <div className="mt-4 flex flex-wrap gap-2.5">
@@ -1295,7 +1286,7 @@ export default function Home() {
                   >
                     <div>
                       <p className="font-semibold">Download Resume</p>
-                      <p className="text-xs text-blue-100">Latest profile and achievements</p>
+                      <p className="text-xs text-blue-100">Latest experience and measurable outcomes</p>
                     </div>
                     <FiArrowUpRight />
                   </a>
